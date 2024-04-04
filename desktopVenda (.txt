@@ -1,0 +1,35 @@
+CREATE TABLE Cliente (
+    id INTEGER PRIMARY KEY NOT NULL,
+    nome VARCHAR(100) NOT NULL,
+    telefone VARCHAR(20),
+    cpf VARCHAR(14) UNIQUE NOT NULL
+);
+
+CREATE TABLE Produto (
+    id INTEGER PRIMARY KEY NOT NULL,
+    descricao VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Venda (
+    id INTEGER PRIMARY KEY NOT NULL,
+    cliente_id INTEGER,
+    FOREIGN KEY (cliente_id) REFERENCES Cliente(id),
+    valor_total FLOAT,
+    desconto_total FLOAT,
+    qtd_total_item INTEGER
+);
+
+CREATE TABLE ItemVenda(
+	id INTEGER PRIMARY KEY NOT NULL,
+	produto_id INTEGER,
+	venda_id INTEGER,
+	FOREIGN KEY (produto_id) REFERENCES Produto(id),
+	FOREIGN KEY (venda_id) REFERENCES Venda(id),
+	descricao VARCHAR(300) NOT NULL,
+	qtd INTEGER NOT NULL,
+	valor_unitario FLOAT NOT NULL,
+	valot_total FLOAT NOT NULL,
+	desconto_unitario FLOAT
+	
+	
+);
